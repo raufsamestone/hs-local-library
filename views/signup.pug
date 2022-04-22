@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+
+
+  div(class='container-md w-50 ' style='margin-top: 20%')
+    form(method='POST' action='')
+      div.form-group
+          label(for='username') Username:
+          input#username.form-control(type='text' placeholder='username' name='username' required='true' value='' )
+          label(for='Password') New Password:
+          input#Password.form-control(type='password' placeholder='Password' name='password' required='true' value='')
+      button.btn.btn-primary(type='submit') Signup
+
+

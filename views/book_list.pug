@@ -1,13 +1,58 @@
 extends layout
 
 block content
-  h1= title
-  
-  ul
+  h1(class='display-1')= title
+
+  form(method='GET' action='' id='search-form')
+    div.form-group
+      label(for='filter')
+      input#filter.form-control(type='text' placeholder='Book title, summary, ISBN...' required='false' name='filter' value='' )
+      div.form-group
+      button.btn.btn-primary(type='submit' ) Search
+      //For criteria based filtering
+      //- label(for='author') Author:
+      //- select#author.form-control(type='select' placeholder='Select author' name='author' required='false' )
+      //-   - authors.sort(function(a, b) {let textA = a.family_name.toUpperCase(); let textB = b.family_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+      //-   for author in authors
+      //-     option(value=author._id) #{author .name}
+      //-       label(for='author')
+      //- br
+      //-     label(for='genre') Genre:
+      //-     select#genre.form-control(type='select' placeholder='Select genre' name='genre' required='false' )
+      //-       for genre in genres
+      //-         option(value=genre._id) #{genre .name}
+      //-           label(for='author')
+      //
+        br
+        a(href='/books') Clear filter
+
+  div(class='row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3')
     each book in book_list
-      li 
-        a(href=book.url) #{book.title}
-        |  (#{book.author.name})
+      div(class='col mb-5') 
+        div(class='card hover:shadow-sm')  
+          img(src=book.image alt=book.title  style='object-fit:cover; height:12rem' class="img-responsive  card-img-top") 
+          div(class='card-body') 
+            a(href=book.url)
+              p(class='card-text text-left text-truncate font-weight-bold')  #{book.title}
+                br
+                small(class='card-text text-left font-weight-normal text-muted') #{book.author.family_name},  #{book.author.first_name}        
+              div(class='flex gap-2') 
+            button.btn.btn-link(type='button' class='text-muted m-0 p-0' data-toggle="modal" data-target="#modal"+book._id style='margin-top: 50%')
+              small(class='card-text text-left font-weight-normal text-muted') Delete
+          .modal(id= ('modal'+ book._id) role='dialog')
+            .modal-dialog.modal-dialog-centered(role='document')
+              .modal-content
+                .modal-header
+                  h3.modal-title Delete
+                .modal-body
+                  p(class='card-text text-center') Are you sure to delete #[strong #{book.title}]  ? 
+                .modal-footer 
+                  form(method='POST' action='')
+                    div.form-group
+                      input#id.form-control(type='hidden' name='id' required='true', value=book._id )
+                    button.btn.btn-secondary(type='button' data-dismiss='modal' class='mr-2') Cancel
+                    button.btn.btn-primary(type='submit') Delete
 
     else
       li There are no books.
+

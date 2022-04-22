@@ -1,20 +1,32 @@
 # Local Library
-This is a take-home project for engineering applicants at HockeyStack, inspired by [MDN's tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website).
 
-----
+## Changes
 
-This web application creates an online catalog for a small local library, where users can browse available books and manage their accounts.
-## Quick Start
+Somehow, homebrew doesn't support latest version of [Node@16](https://formulae.brew.sh/formula/node@16) So, I downgraded from `16.9.1` 
 
-To get this project up and running locally on your computer:
+- Node: `16.14.2` 
 
-1. Set up a [Node.js](https://wiki.developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/development_environment) development environment and install [nodemon](https://www.npmjs.com/package/nodemon) globally.
-2. Fork this repository.
-3. Once you have the files in your local environment, enter the following commands in the root of your repo:
-   ```
-   npm install
-   nodemon app.js
-   ```
-4. Open http://localhost:3000/ to reach the library site.
+- Added some packages. 
+   - jsonwebtoken (for auth token)
+   - Body-parser (for token parsing)
+   - multer (for uploading files)
 
-> **Note:** The library uses a default MongoDb database hosted on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). You should use a different database for your own code experiments.
+- Changed Content Security Policy for third-party networks, with helmet.
+
+## UI
+- Refactored Home and catalog pages.  
+
+## Auth
+(JWT and cookie based)
+
+- Login
+- Signup
+- Logout
+
+## Search/Filter
+
+- Full text-based search
+
+## Refactoring
+
+- MVC architecture

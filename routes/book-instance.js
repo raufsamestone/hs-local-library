@@ -1,30 +1,37 @@
 const express = require('express');
 const router = express.Router();
 
-const book_instance_controller = require('../controllers/bookinstanceController');
+const bookInstanceGetCreate = require("../controllers/book-instance/create-get");
+const bookInstancePostCreate = require("../controllers/book-instance/create-post");
+const bookInstanceGetDelete = require("../controllers/book-instance/delete-get");
+const bookInstancePostDelete = require("../controllers/book-instance/delete-post");
+const bookInstanceGetUpdate = require("../controllers/book-instance/update-get");
+const bookInstancePostUpdate = require("../controllers/book-instance/update-post");
+const bookInstanceGetDetail = require("../controllers/book-instance/detail-get");
+const bookInstanceGetList = require("../controllers/book-instance/list-get");
 
 // GET request for creating a BookInstance. NOTE This must come before route that displays BookInstance (uses id).
-router.get('/create', book_instance_controller.bookinstance_create_get);
+router.get('/create', bookInstanceGetCreate);
 
 // POST request for creating BookInstance.
-router.post('/create', book_instance_controller.bookinstance_create_post);
+router.post('/create', bookInstancePostCreate);
 
 // GET request to delete BookInstance.
-router.get('/:id/delete', book_instance_controller.bookinstance_delete_get);
+router.get('/:id/delete', bookInstanceGetDelete);
 
 // POST request to delete BookInstance.
-router.post('/:id/delete', book_instance_controller.bookinstance_delete_post);
+router.post('/:id/delete', bookInstancePostDelete);
 
 // GET request to update BookInstance.
-router.get('/:id/update', book_instance_controller.bookinstance_update_get);
+router.get('/:id/update', bookInstanceGetUpdate);
 
 // POST request to update BookInstance.
-router.post('/:id/update', book_instance_controller.bookinstance_update_post);
+router.post('/:id/update', bookInstancePostUpdate);
 
 // GET request for one BookInstance.
-router.get('/:id', book_instance_controller.bookinstance_detail);
+router.get('/:id', bookInstanceGetDetail);
 
 // GET request for list of all BookInstance.
-router.get('/', book_instance_controller.bookinstance_list);
+router.get('/', bookInstanceGetList);
 
 module.exports = router;
