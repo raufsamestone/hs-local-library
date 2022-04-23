@@ -1,0 +1,39 @@
+.form-auth {
+  width: 50%;
+  margin: auto;
+}
+.form-group {
+  display: grid;
+  margin: auto;
+}
+.form-group-filter {
+  display: none;
+  margin-right: auto;
+  width: 50%;
+}
+.form-group-filter.open {
+  display: grid;
+}
+
+.form-group-filter-opener {
+  background-color: #ebebeb;
+  width: max-content;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  font-size: var(--text-sm);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+input {
+  padding: 0.7rem;
+  border-radius: 0.2rem;
+  border: none;
+  border: 1px solid #e1e1e1;
+}
+
+label {
+  margin-top: 1rem;
+}

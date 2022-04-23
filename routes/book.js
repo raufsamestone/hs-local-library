@@ -14,7 +14,7 @@ const updateGetController = require("../controllers/books/update-get");
 const updatePostController = require("../controllers/books/update-post");
 
 // GET request for list of all Book.
-router.get("/", listController);
+router.get("/", auth, listController);
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
 router.get("/create", auth, createGetController);

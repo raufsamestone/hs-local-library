@@ -8,50 +8,55 @@ block content
       label(for='filter')
       input#filter.form-control(type='text' placeholder='Book title, summary, ISBN...' required='false' name='filter' value='' )
       div.form-group
-      button.btn.btn-primary(type='submit' ) Search
-      //For criteria based filtering
-      //- label(for='author') Author:
-      //- select#author.form-control(type='select' placeholder='Select author' name='author' required='false' )
-      //-   - authors.sort(function(a, b) {let textA = a.family_name.toUpperCase(); let textB = b.family_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
-      //-   for author in authors
-      //-     option(value=author._id) #{author .name}
-      //-       label(for='author')
-      //- br
-      //-     label(for='genre') Genre:
-      //-     select#genre.form-control(type='select' placeholder='Select genre' name='genre' required='false' )
-      //-       for genre in genres
-      //-         option(value=genre._id) #{genre .name}
-      //-           label(for='author')
-      //
-        br
-        a(href='/books') Clear filter
+    button(type='submit' ) Search 
 
-  div(class='row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3')
+  .form-group-filter-opener(onclick='filterTrigger()') Filter
+  form(method='GET' action='' id='filter' class='form-group-filter')
+    label(for='author')
+    select#author.form-control(type='select' placeholder='Select author' name='author' required='false' )
+      - authors.sort(function(a, b) {let textA = a.family_name.toUpperCase(); let textB = b.family_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+      for author in authors
+        option(value=author._id) #{author .name}
+          label(for='author')
+    label(for='genre')
+    select#genre.form-control(type='select' placeholder='Select genre' name='genre' required='false' )
+      for genre in genres
+        option(value=genre._id) #{genre .name}
+          label(for='genre')   
+    button.btn.btn-primary(type='submit' ) Find      
+    br
+    a(href='/books')(class='text-sm' onclick='closeFilter()') Clear filter
+    br
+
+
+  div(class='grid-row')
     each book in book_list
-      div(class='col mb-5') 
-        div(class='card hover:shadow-sm')  
-          img(src=book.image alt=book.title  style='object-fit:cover; height:12rem' class="img-responsive  card-img-top") 
+      div(class='card-layout') 
+        div(class='card' style='height: auto; margin-bottom:1rem')  
+          img(src=book.image alt=book.title  style='object-fit:cover; height:12rem' class="thumbnail") 
           div(class='card-body') 
             a(href=book.url)
-              p(class='card-text text-left text-truncate font-weight-bold')  #{book.title}
+              p(class='card-title')  #{book.title}
                 br
-                small(class='card-text text-left font-weight-normal text-muted') #{book.author.family_name},  #{book.author.first_name}        
+              small(class='') #{book.author.family_name},  #{book.author.first_name}   
               div(class='flex gap-2') 
-            button.btn.btn-link(type='button' class='text-muted m-0 p-0' data-toggle="modal" data-target="#modal"+book._id style='margin-top: 50%')
-              small(class='card-text text-left font-weight-normal text-muted') Delete
-          .modal(id= ('modal'+ book._id) role='dialog')
-            .modal-dialog.modal-dialog-centered(role='document')
-              .modal-content
-                .modal-header
-                  h3.modal-title Delete
-                .modal-body
-                  p(class='card-text text-center') Are you sure to delete #[strong #{book.title}]  ? 
-                .modal-footer 
-                  form(method='POST' action='')
-                    div.form-group
-                      input#id.form-control(type='hidden' name='id' required='true', value=book._id )
-                    button.btn.btn-secondary(type='button' data-dismiss='modal' class='mr-2') Cancel
-                    button.btn.btn-primary(type='submit') Delete
+                small(class='') #{instances}
+                br
+            img(src="/icons/trash.svg" class='icon' alt="" data-toggle="modal" onclick='modalTrigger()' data-target='modal' + book._id )
+
+          .modal(id= ('modal' + book._id) role='dialog')
+            div(class=('modal-content'))
+              div(class='modal-header')
+                h5(class='modal-title') Delete Book
+              div(class='modal-body')
+                p(class='card-text') Are you sure to delete #[strong #{book.title}]  ? 
+              div(class='modal-footer')
+                form(method='POST' action='')
+                  div.form-group
+                    input#id.form-control(type='hidden' name='id' required='true', value=book._id )
+                  button(type='button' class='secondary-button' data-dismiss='modal' onclick='modalClose()') Cancel
+                  button.btn.btn-primary(type='submit') Delete
+
 
     else
       li There are no books.

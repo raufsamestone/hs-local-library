@@ -1,0 +1,39 @@
+.grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.dashboard-card {
+  height: 12rem;
+  box-shadow: var(--card-shadow);
+  margin: auto;
+  text-align: center;
+  background-color: var(--color-bg-secondary);
+  width: 15rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+}
+
+.dashbaord-card-detail {
+  text-align: center;
+  margin: auto;
+  display: grid;
+}
+.dashbaord-card-detail span {
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin-top: -1rem;
+} 
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  margin: 1rem;
+} 

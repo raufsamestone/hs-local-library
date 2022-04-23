@@ -1,0 +1,19 @@
+.badge {
+  background: rgb(36, 36, 39);
+  padding: 0.2rem;
+  border: 1rem;
+  border-radius: 0.8rem;
+  font-size: 0.7rem;
+  color: white;
+  padding-left: 0.5rem;
+  margin-top: 2rem;
+  padding-right: 0.5rem;
+}
+
+.badge-group {
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+}

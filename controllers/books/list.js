@@ -5,8 +5,15 @@ const Genre = require("../../models/Genre");
 const { parallel } = require("async");
 
 module.exports = function (req, res, next) {
+  //Parameter query filter
   const queryParamTextSearch = req.query.filter;
-  // const queryParamGenre = req.query.genre // Example of category based filtering params
+  const queryParamGenre = req.query.genre;
+  const queryParamAuthor = req.query.author;
+  const filterQuery = [];
+  if (queryParamGenre && queryParamAuthor) {
+    filterQuery.push({ author: queryParamAuthor, genre: queryParamGenre });
+  }
+
   parallel(
     {
       authors: function (callback) {
@@ -19,7 +26,7 @@ module.exports = function (req, res, next) {
     function (err, results) {
       if (queryParamTextSearch) {
         Book.find(
-          { $text: { $search: queryParamTextSearch } }, // or { genre: queryParamGenre } 
+          { $text: { $search: queryParamTextSearch } },
           function (err, listBooks) {
             if (err) {
               return next(err);
@@ -32,6 +39,19 @@ module.exports = function (req, res, next) {
             });
           }
         );
+      }
+      if (filterQuery.length > 0) {
+        Book.find(filterQuery[0], function (err, listBooks) {
+          if (err) {
+            return next(err);
+          }
+          res.render("book_list", {
+            title: "Book List",
+            book_list: listBooks,
+            authors: results.authors,
+            genres: results.genres,
+          });
+        });
       } else {
         Book.find()
           .sort({ title: 1 })

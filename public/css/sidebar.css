@@ -1,0 +1,43 @@
+.sidebar {
+  width: 20rem;
+  margin: 0.3rem;
+  margin-left: auto;
+}
+.sidebar-list li {
+  background-color: #f7f7f7a3;
+  border-radius: 1rem;
+  font-size: var(--text-sm);
+  margin-bottom: 0.6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 0.6rem;
+}
+.sidebar-list li:hover {
+  filter: brightness(90%);
+}
+
+.sidebar-list {
+  list-style: none;
+  border-radius: 0.3rem;
+  margin: 0.4rem;
+  padding: 1rem;
+  text-decoration: none;
+}
+.sidebar > ul {
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgb(14, 13, 13);
+}
+
+hr {
+  width: 50%;
+  color: #2828284a;
+}

@@ -2,7 +2,16 @@ const BookInstance = require("../../models/BookInstance");
 
 // Display list of all BookInstances.
 module.exports = function (req, res, next) {
-  BookInstance.find()
+  
+  //Parameter query filter
+  const queryParamBookInstance = req.query.status;
+  const filterQuery = [];
+  if (queryParamBookInstance) {
+    filterQuery.push({ status: queryParamBookInstance });
+  } else filterQuery.push({});
+  const filterQuery0 = filterQuery[0];
+
+  BookInstance.find(filterQuery0)
     .populate("book")
     .exec(function (err, list_bookinstances) {
       if (err) {

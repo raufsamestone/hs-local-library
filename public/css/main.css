@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap");
+:root {
+  font-family: "Poppins", sans-serif, -apple-system, system-ui,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #fbfbfb;
+  --color-text-primary: #070b11;
+  --color-text-secondary: #0c0c0c;
+  --primary: #42c4efe0;
+  --color-text-accent: #c11d1d;
+  --container-size: 1200px;
+  --card-border-radius: 0.7rem;
+  --text-base: 1rem;
+  --text-large: 1.7rem;
+  --text-sm: 0.8rem;
+  --card-shadow: 0 4px 8px 0 rgba(207, 207, 207, 0.2);
+}
+body {
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg);
+  font-weight: 100;
+}
+
+h1 {
+  font-size: var(--text-large);
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-size: var(--text-large) / 1.2;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  margin: 0;
+  padding: 0;
+}
+h3 {
+  font-size: var(--text-large) / 1.6;
+  font-weight: bold;
+  color: var(--color-text-secondary);
+  margin: 0;
+  padding: 0;
+}
+h4 {
+  font-size: var(--text-large) / 1.8;
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: var(--text-base);
+}
+
+strong {
+  font-weight: bold;
+} 
+
+.text-sm {
+  font-size: var(--text-sm);
+}

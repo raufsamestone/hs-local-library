@@ -12,20 +12,20 @@ block content
 
     p Last added books:
 
-      div(class='row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3')
+      div(class='grid-row')
         each book in data.latest_books
-          div(class='col mb-5') 
+          div(class='card') 
             a(href=book.url)
-              div(class='card hover:shadow-sm')  
-                img(src=book.image alt=book.title  style='object-fit:cover; height:12rem' class="img-responsive  card-img-top") 
-                div(class='card-body') 
-                  p(class='card-text text-left text-truncate font-weight-bold')  #{book.title}
-                    br
-                    small(class='card-text text-left  font-weight-normal text-muted') #{book.author.family_name},  #{book.author.first_name}        
-                  div(class='flex gap-2') 
-                  each val, index in book.genre
-                    span(class='badge badge-pill badge-secondary font-weight-light mr-2') 
-                      small(class='font-weight-normal') #{val.name}
+              div(class='')  
+                img(src=book.image alt=book.title class='thumbnail') 
+                div(class='') 
+                  p(class='card-title')  #{book.title}
+                  small(class='') #{book.author.family_name},  #{book.author.first_name}        
+                  br
+                  div(class='badge-group') 
+                    each val, index in book.genre
+                      span(class='badge') 
+                        small(class='') #{val.name}
 
   h2 Dynamic content
 
@@ -35,12 +35,11 @@ block content
 
     p The library has the following record counts:
 
-    div(class='row row-cols-1 row-cols-md-5 mb-3 text-center')
+    div(class='grid-row')
       each val, index in library_overview
-        div(class='col mb-5')
-          div(class='card')
-            div(class='card-header py-3 font')  #{index}
-            div(class='card-body')
-              div(class='card-title lead text-center m-0 font-weight-bold display-4') #{data[val]}
+        div(class='dashboard-card')
+          div(class='dashbaord-card-detail') 
+            p #{index}
+            span #{data[val]}
 
 

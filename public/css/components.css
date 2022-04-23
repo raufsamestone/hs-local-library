@@ -1,0 +1,66 @@
+.container {
+  max-width: var(--container-size);
+  margin: auto;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+}
+.button-group {
+  display: flex;
+  margin-top: 1rem;
+  font-size: var(--text-sm);
+  gap: 1rem;
+  align-items: center;
+}
+
+button {
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 0.4rem;
+  width: auto;
+  min-width: 8em;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+button:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+}
+
+.secondary-button {
+  background-color: white;
+  color: black;
+}
+.secondary-button:hover {
+  filter: none;
+}
+
+button .link {
+  color: #ffffffed;
+  background-color: none;
+  border: none;
+  padding: 0;
+  width: auto;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+select {
+  background: #f9f9f9;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.6rem;
+  padding-right: 0.6rem;
+  padding-left: 0.6rem;
+}
+
+input[type="text"]:focus {
+  outline: 1px solid green;
+}

@@ -5,12 +5,13 @@ block content
 
 
   div(class='container-md w-50 ' style='margin-top: 20%')
-    form(method='POST' action='')
+    form(method='POST' action='' class='form-auth')
       div.form-group
-          label(for='username') Username:
-          input#username.form-control(type='text' placeholder='username' name='username' required='true' value='' )
-          label(for='Password') New Password:
-          input#Password.form-control(type='password' placeholder='Password' name='password' required='true' value='')
+        label(for='username') Username:
+        input#username.form-control(type='text' placeholder='username' name='username' required='true' value='' )
+        label(for='Password') New Password:
+        input#Password.form-control(type='password' placeholder='Password' name='password' required='true' value='')
+      .button-group 
       button.btn.btn-primary(type='submit') Signup
 
 

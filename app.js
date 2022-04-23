@@ -45,14 +45,9 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
-// app.use(helmet());
 app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: false,
-    directives: {
-      "default-src": helmet.contentSecurityPolicy.dangerouslyDisableDefaultSrc,
-      scriptSrc: ["'self'", "code.jquery.com", "stackpath.bootstrapcdn.com"],
-    },
+  helmet({
+    contentSecurityPolicy: false,
   })
 );
 app.use(compression()); // Compress all routes
